@@ -8,17 +8,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    private int x1;
-    private int y1;
-    private int x2;
-    private int y2;
 
     private EditText x1EditText;
     private EditText y1EditText;
     private EditText x2EditText;
     private EditText y2EditText;
-    private Button resetButton;
-    private Button calculateButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +23,7 @@ public class MainActivity extends AppCompatActivity {
         y1EditText = (EditText) findViewById(R.id.et_y1);
         x2EditText = (EditText) findViewById(R.id.et_x2);
         y2EditText = (EditText) findViewById(R.id.et_y2);
-        resetButton = (Button) findViewById(R.id.btn_reset);
-        calculateButton = (Button) findViewById(R.id.btn_calculate);
+        Button calculateButton = (Button) findViewById(R.id.btn_calculate);
 
         calculateButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,21 +39,13 @@ public class MainActivity extends AppCompatActivity {
                 displayResult(result);
             }
         });
-
-        resetButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // TODO: 04/12/2016 reset
-            }
-        });
-
     }
 
     public int calculate(String x1String, String y1String, String x2String, String y2String) {
-        x1 = Integer.parseInt(x1String);
-        y1 = Integer.parseInt(y1String);
-        x2 = Integer.parseInt(x2String);
-        y2 = Integer.parseInt(y2String);
+        int x1 = Integer.parseInt(x1String);
+        int y1 = Integer.parseInt(y1String);
+        int x2 = Integer.parseInt(x2String);
+        int y2 = Integer.parseInt(y2String);
 
         //Selanjutnya kita buat variabel dx = (x2 - x1) dan dy = (y2 - y1)
         int dx = x2 - x1;
@@ -70,13 +55,7 @@ public class MainActivity extends AppCompatActivity {
         int dsquared = dx * dx + dy * dy;
 
         //Terakhir kita dapat result nya dengan cara mengakarkan nilai dsquared
-        int result = (int) Math.sqrt(dsquared);
-
-        return result;
-    }
-
-    public void reset(){
-        
+        return (int) Math.sqrt(dsquared);
     }
 
     public void displayResult(int result){
