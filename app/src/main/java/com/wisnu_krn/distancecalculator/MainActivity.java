@@ -8,6 +8,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+    private int x1;
+    private int y1;
+    private int x2;
+    private int y2;
 
     private EditText x1EditText;
     private EditText y1EditText;
@@ -15,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
     private EditText y2EditText;
     private Button resetButton;
     private Button calculateButton;
-    private TextView resultTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
         y2EditText = (EditText) findViewById(R.id.et_y2);
         resetButton = (Button) findViewById(R.id.btn_reset);
         calculateButton = (Button) findViewById(R.id.btn_calculate);
-        resultTextView = (TextView) findViewById(R.id.tv_result);
 
         calculateButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,8 +43,7 @@ public class MainActivity extends AppCompatActivity {
                 String y2String = y2EditText.getText().toString().trim();
 
                 int result = calculate(x1String, y1String, x2String, y2String);
-
-                resultTextView.setText(result + "");
+                displayResult(result);
             }
         });
 
@@ -55,11 +56,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private int calculate(String x1String, String y1String, String x2String, String y2String) {
-        int x1 = Integer.parseInt(x1String);
-        int y1 = Integer.parseInt(y1String);
-        int x2 = Integer.parseInt(x2String);
-        int y2 = Integer.parseInt(y2String);
+    public int calculate(String x1String, String y1String, String x2String, String y2String) {
+        x1 = Integer.parseInt(x1String);
+        y1 = Integer.parseInt(y1String);
+        x2 = Integer.parseInt(x2String);
+        y2 = Integer.parseInt(y2String);
 
         //Selanjutnya kita buat variabel dx = (x2 - x1) dan dy = (y2 - y1)
         int dx = x2 - x1;
@@ -73,4 +74,14 @@ public class MainActivity extends AppCompatActivity {
 
         return result;
     }
+
+    public void reset(){
+        
+    }
+
+    public void displayResult(int result){
+        TextView resultTextView = (TextView) findViewById(R.id.tv_result);
+        resultTextView.setText(String.valueOf(result));
+    }
+
 }
