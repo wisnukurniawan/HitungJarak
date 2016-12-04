@@ -2,8 +2,19 @@ package com.wisnu_krn.distancecalculator;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+
+    private EditText x1EditText;
+    private EditText y1EditText;
+    private EditText x2EditText;
+    private EditText y2EditText;
+    private Button resetButton;
+    private Button calculateButton;
+    private TextView resultTextView;
 
     //Punya variabel (x1,y1,x2,y2)
     double x1;
@@ -26,6 +37,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        x1EditText = (EditText) findViewById(R.id.et_x1);
+        y1EditText = (EditText) findViewById(R.id.et_y1);
+        x2EditText = (EditText) findViewById(R.id.et_x2);
+        y2EditText = (EditText) findViewById(R.id.et_y2);
+        resetButton = (Button) findViewById(R.id.btn_reset);
+        calculateButton = (Button) findViewById(R.id.btn_calculate);
+        resultTextView = (TextView) findViewById(R.id.tv_result);
 
     }
 }
