@@ -40,22 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 String x2String = x2EditText.getText().toString().trim();
                 String y2String = y2EditText.getText().toString().trim();
 
-                double x1 = Double.parseDouble(x1String);
-                double y1 = Double.parseDouble(y1String);
-                double x2 = Double.parseDouble(x2String);
-                double y2 = Double.parseDouble(y2String);
-
-                //Selanjutnya kita buat variabel dx = (x2 - x1) dan dy = (y2 - y1)
-                double dx = x2 - x1;
-                double dy = y2 - y1;
-
-                //Selanjutnya kita pangkatkan dx kuadrat ama dy kuadrat, hasilnya kita simpen di variabel dsquared
-                double dsquared = dx * dx + dy * dy;
-
-                //Terakhir kita dapat result nya dengan cara mengakarkan nilai dsquared
-                double result = Math.sqrt(dsquared);
-
-                resultTextView.setText(result + "");
+                calculate(x1String, y1String, x2String, y2String);
             }
         });
 
@@ -66,5 +51,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void calculate(String x1String, String y1String, String x2String, String y2String) {
+        double x1 = Double.parseDouble(x1String);
+        double y1 = Double.parseDouble(y1String);
+        double x2 = Double.parseDouble(x2String);
+        double y2 = Double.parseDouble(y2String);
+
+        //Selanjutnya kita buat variabel dx = (x2 - x1) dan dy = (y2 - y1)
+        double dx = x2 - x1;
+        double dy = y2 - y1;
+
+        //Selanjutnya kita pangkatkan dx kuadrat ama dy kuadrat, hasilnya kita simpen di variabel dsquared
+        double dsquared = dx * dx + dy * dy;
+
+        //Terakhir kita dapat result nya dengan cara mengakarkan nilai dsquared
+        double result = Math.sqrt(dsquared);
+
+        resultTextView.setText(result + "");
     }
 }
